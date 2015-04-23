@@ -6,6 +6,8 @@ Using :
 - make
 - run GameOfLife_alpha
 
+![GoL](https:/github.com/r1d1/gameoflife/blob/gameoflife.png)
+
 Controls :
 - Q : Quit
 - H : Helix initialization

@@ -6,7 +6,7 @@ Using :
 - make
 - run GameOfLife_alpha
 
-![GoL](https:/github.com/r1d1/gameoflife/blob/gameoflife.png)
+![GoL](/gameoflife.png?raw=true)
 
 Controls :
 - Q : Quit

@@ -21,23 +21,30 @@ class Universe
 		Universe();
 		~Universe();
 
-		int getLocation(int x, int y);
-		int getLocation_past(int x, int y);
-		void setLocation(int x, int y, int valeur);
-		void setLocation_past(int x, int y, int valeur);
+		//int getLocation(int x, int y);
+		//int getLocation_past(int x, int y);
+		float getLocation(int x, int y);
+		float getLocation_past(int x, int y);
+		//void setLocation(int x, int y, int valeur);
+		//void setLocation_past(int x, int y, int valeur);
+		void setLocation(int x, int y, float valeur);
+		void setLocation_past(int x, int y, float valeur);
 		
 		void init_rocket_universe();
 		void init_bird_universe();
 		void init_helix_universe();
 		void init_trial_universe();
 		void init_rand_universe();
+		void init_randfloat_universe();
 		void reset();
 		void update_universe();
 		void display(sf::RenderWindow & appli);
 
 	private :
-		int universe[DIM][DIM];
-		int past_universe[DIM][DIM];
+		//int universe[DIM][DIM];
+		float universe[DIM][DIM];
+		//int past_universe[DIM][DIM];
+		float past_universe[DIM][DIM];
 };
 
 #endif

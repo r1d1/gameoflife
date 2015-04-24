@@ -28,7 +28,8 @@ int main()
 		if (App.GetInput().IsKeyDown(sf::Key::B)){ GoLife.init_bird_universe(); }
 		if (App.GetInput().IsKeyDown(sf::Key::T)){ GoLife.init_trial_universe(); }
 		if (App.GetInput().IsKeyDown(sf::Key::C)){ GoLife.init_rand_universe(); }	
-		if (App.GetInput().IsKeyDown(sf::Key::E)){ GoLife.reset(); }
+		if (App.GetInput().IsKeyDown(sf::Key::V)){ GoLife.init_randfloat_universe(); }	
+		if (App.GetInput().IsKeyDown(sf::Key::E)){ GoLife.reset(); run = false; }
 		if (App.GetInput().IsKeyDown(sf::Key::A)){ run = true; }
 		if (App.GetInput().IsKeyDown(sf::Key::Z)){ run = false; }
 		if(run){ GoLife.update_universe(); }

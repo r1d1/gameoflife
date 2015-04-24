@@ -14,7 +14,8 @@ Controls :
 - R : Rocket initialization
 - B : Bird initialization
 - T : Trial initialization (heart shape)
-- C : Full world random initialization
+- C : Full world int random initialization
+- V : Full world float random initialization
 - E : Reset world (everything goes to zero)
 - A : run simulation
 - Z : stop simulation

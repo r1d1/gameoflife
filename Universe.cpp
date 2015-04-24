@@ -10,41 +10,17 @@
 #include "Universe.h"
 
 Universe::Universe(){ reset(); }
-
-Universe::~Universe()
-{
-/*	for(int i = 0; i < DIM; ++i)
-	{
-		delete universe[i];
-	}
-	delete[] universe;
-
-	for(int i = 0; i < DIM; ++i)
-	{
-		delete past_universe[i];
-	}
-	delete[] past_universe;
-	*/
-}
+Universe::~Universe(){}
 
 void Universe::init_rocket_universe()
 {
-	int i, j;
-	
 	universe[DIM/2][DIM/2-1]=1;
 	universe[DIM/2 -1][DIM/2]=1;
 	universe[DIM/2-1][DIM/2+1]=1;
 	universe[DIM/2][DIM/2+1]=1;
 	universe[DIM/2+1][DIM/2+1]=1;
 
-	for(i = 0; i < DIM; i++)
-	{
-		for(j=0 ; j < DIM ; j++)
-		{
-			past_universe[i][j] = universe[i][j];
-		}
-	}
-
+	for(int i = 0; i < DIM; i++){ for(int j=0 ; j < DIM ; j++){ past_universe[i][j] = universe[i][j]; } }
 }
 
 void Universe::init_bird_universe()
@@ -128,6 +104,19 @@ void Universe::init_rand_universe()
 	}
 }
 
+void Universe::init_randfloat_universe()
+{
+	for(int i = 0; i < DIM; i++)
+	{
+		for(int j=0 ; j < DIM ; j++)
+		{
+			universe[i][j] = rand() % 100 / 100.0;
+			//std::cout << universe[i][j] << std::endl;
+			past_universe[i][j] = universe[i][j];
+		}
+	}
+}
+
 void Universe::reset()
 {
 	for(int i = 0; i < DIM; i++){ for(int j=0 ; j < DIM ; j++){ past_universe[i][j] = universe[i][j] = 0; } }
@@ -166,16 +155,21 @@ void Universe::update_universe()
 
 			// Checking neightbours 
 			if (getLocation_past(i,j) == 1){ if(sum > 3 || sum < 2){ universe[i][j] = 0; } }
-			else{ if(sum == 3){ universe[i][j] += 1; } }
+			//if (getLocation_past(i,j) > 0.5){ if(sum > 3 || sum < 2){ universe[i][j] = 0.0; } }
+			else{ if(sum == 3){ universe[i][j] += 1.0; } }
 		}
 	}
 	//=====================================================	
 }
 
-int Universe::getLocation(int x, int y){ return universe[x][y]; }
-int Universe::getLocation_past(int x, int y){ return past_universe[x][y]; }
-void Universe::setLocation(int x, int y, int valeur){ universe[x][y] = valeur; }
-void Universe::setLocation_past(int x, int y, int valeur){ past_universe[x][y] = valeur; }
+//int Universe::getLocation(int x, int y){ return universe[x][y]; }
+//int Universe::getLocation_past(int x, int y){ return past_universe[x][y]; }
+float Universe::getLocation(int x, int y){ return universe[x][y]; }
+float Universe::getLocation_past(int x, int y){ return past_universe[x][y]; }
+//void Universe::setLocation(int x, int y, int valeur){ universe[x][y] = valeur; }
+//void Universe::setLocation_past(int x, int y, int valeur){ past_universe[x][y] = valeur; }
+void Universe::setLocation(int x, int y, float valeur){ universe[x][y] = valeur; }
+void Universe::setLocation_past(int x, int y, float valeur){ past_universe[x][y] = valeur; }
 
 void Universe::display(sf::RenderWindow & appli)
 {
